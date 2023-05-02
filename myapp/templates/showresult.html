@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Malpractice Report</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px;
+            background-color: #6abadeba;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            height: 70px;
+            background: #23463f;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+
+        nav .navbar {
+            height: 100%;
+            max-width: 1250px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: auto;
+            /* background: red; */
+            padding: 0 50px;
+        }
+
+        .navbar .logo a {
+            font-size: 30px;
+            color: #08ffd1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .navbar .logo a:hover {
+            color: white;
+        }
+
+        nav .navbar .nav-links {
+            line-height: 70px;
+            height: 100%;
+        }
+
+        nav .navbar .links {
+            display: flex;
+        }
+
+        nav .navbar .links li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0 14px;
+        }
+
+        nav .navbar .links li a {
+            height: 100%;
+            text-decoration: none;
+            white-space: nowrap;
+            color: #08ffd1;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .navbar .links li a:hover {
+            color: white;
+        }
+
+        .links li:hover .htmlcss-arrow,
+        .links li:hover .js-arrow {
+            transform: rotate(180deg);
+        }
+
+        nav .navbar .links li .arrow {
+            /* background: red; */
+            height: 100%;
+            width: 22px;
+            line-height: 70px;
+            text-align: center;
+            display: inline-block;
+            color: #08ffd1;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .links li .arrow:hover {
+            color: white;
+        }
+
+        nav .navbar .links li .sub-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            line-height: 40px;
+            background: #23463f;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 4px 4px;
+            display: none;
+            z-index: 2;
+        }
+
+        .navbar .links li .sub-menu a:hover {
+            color: white;
+        }
+
+        nav .navbar .links li:hover .htmlCss-sub-menu,
+        nav .navbar .links li:hover .js-sub-menu {
+            display: block;
+        }
+
+        .navbar .links li .sub-menu li {
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar .links li .sub-menu a {
+            color: #08ffd1;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .navbar .links li .sub-menu .more-arrow {
+            line-height: 40px;
+        }
+
+        .navbar .links li .htmlCss-more-sub-menu {
+            /* line-height: 40px; */
+        }
+
+        .navbar .links li .sub-menu .more-sub-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            border-radius: 0 4px 4px 4px;
+            z-index: 1;
+            display: none;
+        }
+
+        .links li .sub-menu .more:hover .more-sub-menu {
+            display: block;
+        }
+
+        .navbar .search-box {
+            position: relative;
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .nav-links .sidebar-logo {
+            display: none;
+        }
+
+        .navbar .bx-menu {
+            display: none;
+        }
+
+        @media (max-width:920px) {
+            nav .navbar {
+                max-width: 100%;
+                padding: 0 25px;
+            }
+
+            nav .navbar .logo a {
+                font-size: 27px;
+            }
+
+            nav .navbar .links li {
+                padding: 0 10px;
+                white-space: nowrap;
+            }
+
+            nav .navbar .links li a {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width:800px) {
+            nav {
+                /* position: relative; */
+            }
+
+            .navbar .bx-menu {
+                display: block;
+            }
+
+            nav .navbar .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                display: block;
+                max-width: 270px;
+                width: 100%;
+                background: #3E8DA8;
+                line-height: 40px;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.5s ease;
+                z-index: 1000;
+            }
+
+            .navbar .nav-links .sidebar-logo {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sidebar-logo .logo-name {
+                font-size: 25px;
+                color: #fff;
+            }
+
+            .sidebar-logo i,
+            .navbar .bx-menu {
+                font-size: 25px;
+                color: #fff;
+            }
+
+            nav .navbar .links {
+                display: block;
+                margin-top: 20px;
+            }
+
+            nav .navbar .links li .arrow {
+                line-height: 40px;
+            }
+
+            nav .navbar .links li {
+                display: block;
+            }
+
+            nav .navbar .links li .sub-menu {
+                position: relative;
+                top: 0;
+                box-shadow: none;
+                display: none;
+            }
+
+            nav .navbar .links li .sub-menu li {
+                border-bottom: none;
+
+            }
+
+            .navbar .links li .sub-menu .more-sub-menu {
+                display: none;
+                position: relative;
+                left: 0;
+            }
+
+            .navbar .links li .sub-menu .more-sub-menu li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .links li:hover .htmlcss-arrow,
+            .links li:hover .js-arrow {
+                transform: rotate(0deg);
+            }
+
+            .navbar .links li .sub-menu .more-sub-menu {
+                display: none;
+            }
+
+            .navbar .links li .sub-menu .more span {
+                display: flex;
+                align-items: center;
+            }
+
+            .links li .sub-menu .more:hover .more-sub-menu {
+                display: none;
+            }
+
+            nav .navbar .links li:hover .htmlCss-sub-menu,
+            nav .navbar .links li:hover .js-sub-menu {
+                display: none;
+            }
+
+            .navbar .nav-links.show1 .links .htmlCss-sub-menu,
+            .navbar .nav-links.show3 .links .js-sub-menu,
+            .navbar .nav-links.show2 .links .more .more-sub-menu {
+                display: block;
+            }
+
+            .navbar .nav-links.show1 .links .htmlcss-arrow,
+            .navbar .nav-links.show3 .links .js-arrow {
+                transform: rotate(180deg);
+            }
+
+            .navbar .nav-links.show2 .links .more-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width:370px) {
+            nav .navbar .nav-links {
+                max-width: 100%;
+            }
+        }
+
+        .container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            background: #23463f;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .container header {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+        }
+        .content-table tr {
+            background-color: #08ffd1;
+            border-radius: 10px;
+            color: black;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+        
+        .content-table tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        
+        .content-table tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        
+        .content-table tr:last-of-type {
+            border-bottom: 2px solid #08ffd1;
+        }
+        
+        .content-table tr.active-row {
+            font-weight: bold;
+            color: #08ffd1;
+        }
+        button {
+            position: relative;
+            height: 55px;
+            width: 50%;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 30px;
+            border: none;
+            cursor: pointer;
+            background: rgb(130, 106, 251);
+        }
+
+        button:hover {
+            background: rgb(88, 56, 250);
+        }
+        .container{
+            text-align: center;
+        }
+    </style>    
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo"><a href="/homepage">Student Portal</a></div>
+            <div class="nav-links">
+                <div class="sidebar-logo">
+                    <span class="logo-name">Student Portal</span>
+                    <i class='bx bx-x'></i>
+                </div>
+                <ul class="links">
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <a href="#">Circular </a>
+                        <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="#">RA2011</a></li>
+                            <li><a href="#">CET KTR</a></li>
+                            <li><a href="#">Examination</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Malpractice</a>
+                        <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                        <ul class="js-sub-menu sub-menu">
+                            <li><a href="/form">Malpractice Form</a></li>
+                            <li><a href="/actiont">Action Taken</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/search">Search Student</a></li>
+                    <li class="login"><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <div class="container">
+        <header>Malpractice Report</header>
+        <br>
+        <table class = "content-table", style = "width:100%">
+            {% for x in data %}
+            <tr>
+                <th>Student Name</th>
+                <td>{{ x.studentname }}</td>
+            </tr>
+            <tr>
+                <th>Registration Number</th>
+                <td>{{ x.registrationnumber }}</td>
+            </tr>
+            <tr>
+                <th>Faculty Advisor</th>
+                <td>{{ x.facultyadvisor }}</td>
+            </tr>
+            <tr>
+                <th>Faculty Ad Email</th>
+                <td>{{ x.facultyademail }}</td>
+            </tr>
+            <tr>
+                <th>Squad Name</th>
+                <td>{{ x.squadname }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry Date</th>
+                <td>{{ x.enquirydate }}</td>
+            </tr>
+            <tr>
+                <th>Squad Email</th>
+                <td>{{ x.squademail }}</td>
+            </tr>
+            <tr>
+                <th>Malpractice Details</th>
+                <td>{{ x.malpracticedetail }}</td>
+            </tr>
+            <tr>
+                <th>Examination</th>
+                <td>{{ x.examination }}</td>
+            </tr>
+            <tr>
+                <th>Subject Code</th>
+                <td>{{ x.subjectcode }}</td>
+            </tr>
+            <tr>
+                <th>Subject Name</th>
+                <td>{{ x.subjectname }}</td>
+            </tr>
+            <tr>
+                <th>Action Taken</th>
+                <td>{{ x.actiontaken }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class = "container">
+            <button onclick='handlePrint()'>Print</button>
+        </div>
+        <script type="text/javascript">
+            const handlePrint = () => {
+            var actContents = document.body.innerHTML;
+            document.body.innerHTML = actContents;
+            window.print();
+        }
+        </script>   
+</div> 
+</body>
+</html>
